@@ -1,14 +1,14 @@
-import React from 'react'
-import EditProfile from './EditProfile'
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+import EditProfile from "./EditProfile";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
   return (
-    user && <div className='flex-grow' >
-      <EditProfile user={user} />
-    </div>
-  )
-}
-
-export default Profile
+    user && (
+      <div>
+        <EditProfile user={user} />
+      </div>
+    )
+  );
+};
+export default Profile;
