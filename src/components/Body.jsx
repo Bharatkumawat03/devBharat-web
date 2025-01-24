@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { addUser } from "../utils/userSlice";
+import Sidebar from "./SideBar";
 
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((store) => store.user);
 
+  
   const fetchUser = async () => {
     if (userData) return;
     try {
@@ -26,15 +28,16 @@ const Body = () => {
       console.error(err);
     }
   };
-
+  
   useEffect(() => {
     fetchUser();
   }, []);
-
+  
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
       <div className="min-h-screen">
+        <Sidebar />
         <Outlet />
       </div>
       <Footer />

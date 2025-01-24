@@ -21,13 +21,13 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          devBharat
+        <Link to="/feed" className="btn btn-ghost text-xl">
+        <span className="text-2xl">🦸🏻</span>DevBharat
         </Link>
       </div>
       {user && (
         <div className="flex-none gap-2">
-          <div className="form-control">Welcome, {user.firstName}</div>
+          <div className="form-control hidden md:block">Welcome, {user.firstName}</div>
           <div className="dropdown dropdown-end mx-5">
             <div
               tabIndex={0}
