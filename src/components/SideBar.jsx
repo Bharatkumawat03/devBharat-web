@@ -22,7 +22,7 @@ const Sidebar = () => {
   };
 
   return (
-    isLoggedIn && <div className="absolute drawer lg:drawer-open  inset-0 mt-16 h-full  ">
+    isLoggedIn && <div className="drawer lg:drawer-open  inset-0  h-screen  ">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className={`drawer-content flex flex-col items-center justify-center ${isModalOpen ? "blur-sm" : ""}`}>
         <label

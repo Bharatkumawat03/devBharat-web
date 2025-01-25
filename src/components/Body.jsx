@@ -5,15 +5,15 @@ import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import { addUser } from "../utils/userSlice";
+import { addUser, selectIsLoggedIn } from "../utils/userSlice";
 import Sidebar from "./SideBar";
 
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((store) => store.user);
+   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  
   const fetchUser = async () => {
     if (userData) return;
     try {
@@ -36,9 +36,14 @@ const Body = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
-      <div className="min-h-screen">
+      <div className="min-h-screen flex ">
+        {/* <div className="hidden lg:block w-1/5 "> */}
+        <div className={`hidden w-1/5 ${isLoggedIn ? 'lg:block' : 'hidden'}`}>
         <Sidebar />
+        </div>
+        <div className={`w-screen ${isLoggedIn ? 'lg:w-4/5' : 'w-screen'}`}>
         <Outlet />
+        </div>
       </div>
       <Footer />
     </div>

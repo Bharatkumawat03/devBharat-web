@@ -9,14 +9,18 @@ const Requests = () => {
   const dispatch = useDispatch();
 
   const reviewRequest = async (status, _id) => {
+    console.log(`Request ${_id} is being ${status}`);
     try {
       const res = axios.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
         {},
         { withCredentials: true }
       );
+      console.log(res);
       dispatch(removeRequest(_id));
-    } catch (err) {}
+    } catch (err) {
+      console.error("Error reviewing request:", err);
+    }
   };
 
   const fetchRequests = async () => {
@@ -39,7 +43,7 @@ const Requests = () => {
     return <h1 className="flex justify-center my-10"> No Requests Found</h1>;
 
   return (
-    <div className="w-full md:w-3/4 mx-auto lg:ml-[22vw] text-center my-10">
+    <div className="w-full md:w-3/4 z-0 mx-auto text-center my-10">
       <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
 
       {requests.map((request) => {
@@ -49,7 +53,7 @@ const Requests = () => {
         return (
           <div
             key={_id}
-            className=" flex justify-between items-center m-4 p-4 rounded-lg bg-base-300"
+            className=" flex justify-between items-center m-4 p-4 rounded-lg bg-base-300 mx-auto"
           >
             <div>
               <img
@@ -67,13 +71,13 @@ const Requests = () => {
             </div>
             <div>
               <button
-                className="btn btn-primary mx-2"
+                className="btn btn-primary mx-2 cursor-pointer"
                 onClick={() => reviewRequest("rejected", request._id)}
               >
                 Reject
               </button>
               <button
-                className="btn btn-secondary mx-2"
+                className="btn btn-secondary mx-2 cursor-pointer"
                 onClick={() => reviewRequest("accepted", request._id)}
               >
                 Accept

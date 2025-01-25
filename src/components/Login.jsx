@@ -60,7 +60,7 @@ const Login = () => {
           <div>
             {isLoginForm ? (
               <p className="text-left text-3xl font-bold">
-                Welcome 🙏, DevTinder
+                Welcome 🙏, DevBharat
               </p>
             ) : (
               <p className="text-left text-3xl font-bold">Register</p>
