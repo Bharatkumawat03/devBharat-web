@@ -4,7 +4,7 @@ import React from 'react'
 const ProfileCard = ({user}) => {
    
     const {firstName, lastName, photoUrl, age,skills, gender, about ,emailId } = user ||  {};
-    console.log(user);
+    // console.log(user);
   return (
     <div className="">
     <div className="bg-base-200 shadow-xl rounded-lg py-3 w-[75vw] md:w-[30vw] lg:w-[20vw] ">

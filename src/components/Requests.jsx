@@ -9,14 +9,14 @@ const Requests = () => {
   const dispatch = useDispatch();
 
   const reviewRequest = async (status, _id) => {
-    console.log(`Request ${_id} is being ${status}`);
+    // console.log(`Request ${_id} is being ${status}`);
     try {
       const res = axios.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
         {},
         { withCredentials: true }
       );
-      console.log(res);
+      // console.log(res);
       dispatch(removeRequest(_id));
     } catch (err) {
       console.error("Error reviewing request:", err);
